@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Sekolah</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta name="description" content="Website resmi SMA Negeri 3 Luwu. Informasi profil sekolah, galeri, berita, dan kontak.">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-image: url('background.jpg'); background-size: cover; background-attachment: fixed; color: #333; transition: background-color 0.5s; }
+    header, nav, footer { background-color: #111111; color: rgb(193, 241, 20); padding: 15px; box-shadow: 0 2px 4px rgba(4, 0, 10, 0.3); }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    nav {
+      position: fixed;
+      top: 90px;
+      width: 100%;
+      z-index: 999;
+    }
+    main {
+      padding: 180px 20px 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+    header img {
+      height: 60px;
+      transition: transform 0.3s;
+    }
+    header img:hover {
+      transform: scale(1.1);
+    }
+    header h1 {
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    nav ul { list-style-type: none; display: flex; flex-wrap: wrap; justify-content: space-around; padding: 0; margin: 0; }
+    nav li { margin: 5px 0; }
+    nav a {
+      color: white;
+      text-decoration: none;
+      text-shadow: 1px 1px 3px rgba(110, 2, 250, 0.4);
+      position: relative;
+      transition: color 0.3s;
+      padding: 5px 10px;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      background: rgb(233, 221, 221);
+      transition: width 0.3s;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    nav a.active {
+      background-color: rgba(197, 40, 40, 0.2);
+      border-radius: 5px;
+    }
+    section { margin-bottom: 40px; opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
+    section.visible { opacity: 1; transform: translateY(0); }
+    h2, h3 { text-shadow: 1px 1px 3px rgba(0,0,0,0.3); }
+    #struktur { text-align: center; }
+    #struktur .foto-struktur {
+      display: block;
+      margin: 20px auto;
+      max-width: 80%;
+      height: auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    #galeri, #berita {
+      background-image: url('galeri.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 40px;
+      color: rgb(58, 28, 194);
+      box-shadow: inset 0 0 0 1000px rgba(221, 206, 206, 0.5);
+    }
+    .grid-galeri, .grid-berita {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 17px;
+      margin-top: 10px;
+    }
+    .grid-galeri img, .grid-berita img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+    }
+    .grid-galeri img:hover, .grid-berita img:hover {
+      transform: scale(1.5);
+    }
+    footer { text-align: center; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); margin-top: 40px; }
+    @media (max-width: 600px) {
+      nav ul { flex-direction: column; align-items: center; }
+      header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+  <script>
+    window.addEventListener('scroll', function() {
+      const sections = document.querySelectorAll('main section');
+      const trigger = window.innerHeight * 0.9;
+      const navLinks = document.querySelectorAll('nav a');
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top < trigger) {
+          sec.classList.add('visible');
+        }
+      });
+      let currentSectionId = '';
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top <= 100 && rect.bottom >= 100) {
+          currentSectionId = sec.id;
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').substring(1) === currentSectionId) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo Sekolah">
+    <h1>SMA NEGERI 3 LUWU</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="#home">Beranda</a></li>
+      <li><a href="#profil">Profil Sekolah</a></li>
+      <li><a href="#struktur">Struktur Organisasi</a></li>
+      <li><a href="#program">Program & Ekstrakurikuler</a></li>
+      <li><a href="#galeri">Galeri</a></li>
+      <li><a href="#berita">Berita</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section id="home">
+      <h2>Beranda</h2>
+      <h2></h2><p>SELAMAT DATANG DI WEBSITE RESMI SEKOLAH KAMI</p>
+      <img src="GERBANG.png" alt="Selamat Datang di Website Resmi Sekolah kami" style="max-width:200%; height:auto; margin-top:15px; border-radius:8px;">
+    </section>
+    <section id="profil">
+      <h2>Profil Sekolah</h2>
+      <h3>Sejarah</h3>
+      <p>SMA NEGERI 3 LUWU adalah salah satu sekolah tertua di Kabupaten Luwu, Provinsi Sulawesi Selatan. Sekolah ini telah berdiri sejak beberapa dekade lalu dan menjadi lembaga pendidikan yang berperan penting dalam mencetak generasi penerus bangsa. Dengan fasilitas yang terus berkembang dan tenaga pengajar yang kompeten, SMA Negeri 3 Luwu tetap menjaga komitmennya dalam memberikan pendidikan berkualitas. Selain prestasi akademik, sekolah ini juga dikenal aktif dalam kegiatan ekstrakurikuler yang mendukung pengembangan karakter dan bakat siswa.</p>
+      <h3>Visi & Misi</h3>
+      <p><strong>Visi:</strong> Unggul dalam mutu, berpacu dalam prestasi, Beriman dan Bertakwah kepada Tuhan Yang Maha Esa serta berwawasan Lingkungan.</p>
+      <p><strong>Misi:</strong> 
+      </p> 1. Melaksanakan Pembinaan Keagamaan.</p>
+      </p> 2. Melaksanakan Pembelajaran yang Efektif dan Proaktif.</p>
+      </p> 3. Mewujudkan Iklim Sekolah yang Bersih, Indah, Nyaman dan Bersih.</p>
+      </p> 4. Melaksanakan Pembinaan Profesionalisme Guru secara Berkelanjutan.</p>
+      </p> 5. Melaksanakan Pembinaan Pengembangan Diri secara Kontiniu.</p>
+      </p> 6. Menciptakan Suasana Lingkungan Sekolah yang Kondusif.</p>
+    </section>
+    <section id="struktur">
+      <h2>Struktur Organisasi</h2>
+      <p>Struktur organisasi sekolah terdiri dari Kepala Sekolah, Wakil Kepala Sekolah, Guru, dan Staf.</p>
+      <img src="STRUKTUR.png" alt="Struktur Organisasi" class="foto-struktur">
+    </section>
+    <section id="program">
+      <h2>Program Pendidikan & Ekstrakurikuler</h2>
+      <ul>
+        <li>Program Akademik: Ilmu Pengetahuan Alam (IPA)dan Ilmu Pengetahuan Sosial (IPS).</li>
+        <li>Ekstrakurikuler: Pramuka, Paskibra, Seni Musik, Olahraga</li>
+      </ul>
+      <div style="margin-top: 30px;">
+        <h3>Ekstrakurikuler Kami</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px;">
+          <div style="text-align: center; width: 120px;">
+            <img src="mpk.png" alt="Pramuka" style="width: 100px; height: auto;">
+            <p>MPK</p>
+          </div>
+          <div style="text-align: center; width: 120px;">
+            <img src="bataradatu.png" alt="Paskibra" style="width: 100px; height: auto;">
+            <p>PRAMUKA</p>
+          </div>
+          <div style="text-align: center; width: 120px;">
+            <img src="karyasastra.png" alt="Seni Musik" style="width: 100px; height: auto;">
+            <p>KARYA SASTRA</p>
+          </div>
+          <div style="text-align: center; width: 120px;">
+            <img src="SANGARSENI.png" alt="Olahraga" style="width: 100px; height: auto;">
+            <p>SANGGAR SENI</p>
+          </div> 
+          <div style="text-align: center; width: 120px;">
+            <img src="paskibra.png" alt="Olahraga" style="width: 100px; height: auto;">
+            <p>PASKIBRAKA</p>
+          </div>
+            <div style="text-align: center; width: 120px;">
+            <img src="VOLLY.png" alt="Olahraga" style="width: 100px; height: auto;">
+            <p>VOLLY BALL</p> 
+          </div>
+            <div style="text-align: center; width: 120px;">
+            <img src="TAPAKSUCI.png" alt="Olahraga" style="width: 100px; height: auto;">
+            <p>TAPAK SUCI</p>
+          </div>
+          <div style="text-align: center; width: 120px;">
+          <img src="PALANGMERAH.png" alt="Olahraga" style="width: 100px; height: auto;">
+          <p>PALANG MERAH</p> 
+        </div>
+          <div style="text-align: center; width: 120px;">
+          <img src="SISPALA.png" alt="Olahraga" style="width: 100px; height: auto;">
+          <p>SISPALA</p> 
+        </div>
+          <div style="text-align: center; width: 120px;">
+          <img src="DRUMBAND.png" alt="Olahraga" style="width: 100px; height: auto;">
+          <p>DRUM BAND</p> 
+        </div>
+        <div style="text-align: center; width: 120px;">
+          <img src="ROHIS.png" alt="Olahraga" style="width: 100px; height: auto;">
+          <p>ROHIS</p> 
+        </div> 
+        <div style="text-align: center; width: 120px;">
+          <img src="FUTSAL.png" alt="Olahraga" style="width: 100px; height: auto;">
+          <p>FUTSAL</p> 
+        </div>   
+    </section>
+    <section id="galeri">
+      <h2>Galeri Kegiatan</h2>
+      <div class="grid-galeri">
+        <img src="foto1.jpg" alt="Kegiatan 1">
+        <img src="foto2.jpg" alt="Kegiatan 2">
+        <img src="foto3.jpg" alt="Kegiatan 3">
+        <img src="foto4.jpg" alt="Kegiatan 4">
+        <img src="foto5.jpg" alt="Kegiatan 5">
+        <img src="foto6.jpg" alt="Kegiatan 6">
+        <img src="foto7.jpg" alt="Kegiatan 7">
+        <img src="foto8.jpg" alt="Kegiatan 8">
+        <img src="foto9.jpg" alt="Kegiatan 9">
+      </div>
+    </section>
+    <section id="berita">
+      <h2>Berita dan Pengumuman</h2>
+      <h2>SISTEM PENERIMAAN MURID BARU (SPMB) TAHUN 2025</h2>
+      <div class="grid-berita">
+        <img src="0.png" alt="SPMB 1">
+        <img src="1.png" alt="SPMB 2">
+        <img src="2.png" alt="SPMB 3">
+        <img src="3.png" alt="SPMB 4">
+        <img src="4.png" alt="SPMB 5">
+        <img src="5.png" alt="SPMB 6">
+      </div>
+    </section>
+    <section id="kontak">
+      <h2>Kontak Sekolah</h2>
+      <p>Alamat: Jl. Pendidikan, kel.Larompong. Kab.Luwu</p>
+      <p>Telepon/Hp: +62 81242973662</p>
+      <p>Email: sma3luwu@gmail.com</p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Sekolah Menengah Atas 3 Luwu. Semua Hak Dilindungi.</p>
+  </footer>
+</body>
+</html>
